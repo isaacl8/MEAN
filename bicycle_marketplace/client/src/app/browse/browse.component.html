@@ -1,0 +1,17 @@
+<h1>Bicycle Marketplace</h1>
+<a [routerLink]="['/browse']">Browse</a>
+<a [routerLink]="['/listings']">My Listings</a>
+<a href="/logout">Logout</a>
+<!--{{bikes | json}}-->
+
+<div>
+    <fieldset *ngFor="let bike of bikes">
+        <!--<h1>{{bike._id}}</h1>-->
+        <h3>Title: {{bike.title}}</h3>
+        <a (click)="contactInfo(bike._id)">Contact</a>
+        <!--<h3>{{bike}}</h3>-->
+        <button (click)="deleteBike(bike._id)" *ngIf="user._id == bike._user._id">Delete</button>
+        <!--<h3>{{user._id}}</h3>-->
+    </fieldset>
+</div>
+

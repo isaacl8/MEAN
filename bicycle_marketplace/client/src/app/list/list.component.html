@@ -1,0 +1,31 @@
+<h1>Bicycle Marketplace</h1>
+<a [routerLink]="['/browse']">Browse</a>
+<a [routerLink]="['/listings']">My Listings</a>
+
+<fieldset>
+    <h3>Create Listing</h3>
+    <form (submit)="createBike(formData)" #formData="ngForm">
+        Title: <input type="text" name="title" ngModel>
+        Price: <input type="text" name="price" ngModel>
+        Description: <input type="text" name="description" ngModel>
+        Location: <input type="text" name="location" ngModel>
+        <input type="submit" value="Create">
+    </form>
+</fieldset>
+<!--{{ userBike | json}}-->
+<!--<fieldset>
+    {{userBike.title}}
+</fieldset>-->
+<fieldset id="up" *ngFor="let bike of userBike">
+    <h3>Update Listing</h3>
+    <form (submit)="updateBike(formData)" #formData="ngForm">
+        <input type="hidden" name="_id" [(ngModel)]="bike._id">
+        Title: <input type="text" name="title" [(ngModel)]="bike.title">
+        Price: <input type="text" name="price" [(ngModel)]="bike.price">
+        Description: <input type="text" name="description" [(ngModel)]="bike.description">
+        Location: <input type="text" name="location" [(ngModel)]="bike.location">
+        <input type="submit" value="Create">
+        
+    </form>
+    <button (click)="deleteBike(bike._id)">Delete</button>
+</fieldset>
